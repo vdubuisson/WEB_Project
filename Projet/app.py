@@ -21,19 +21,26 @@ def hash_for(password):
 	salted = '%s @ %s' % (SALT, password)
 	return hashlib.sha256(salted).hexdigest()
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST']) 
 def index():
+	if 'application/json' not in request.headers['Content-Type'] :
+		print  request.headers['Content-Type']
+		return redirect(url_for('static', filename='index.html'))
+		
 	db = engine.connect()
-	#data = []
 	try:
-		row = db.execute(select([Rubriques.c.titre]).where(Rubriques.c.id == 1)).fetchone()
-		#for title in row:
-		#	data.append({'titre': title})
+		data = []
+		row = db.execute(select([Rubriques.c.titre]).where(Rubriques.c.id_page == 1)).fetchall()
+		for title in row:
+			print(title)
+			#data.append({'titre': title})
 	finally:
 		db.close()
-	data = [{'titre':row[0]}]
-	content = json.dumps(data)
-	return render_template('accueil.html', name="Accueil", rubriques=content)
+	data = [{'titre': "Exemple"}, {'titre': "Ex 2"}, {'titre': "Ex autre"}]
+	return json.dumps(data)
+	
+	
+	
 
     
 
