@@ -8,7 +8,7 @@ app.secret_key = os.urandom(256)
 
 SALT = 'foo#BAR_{baz}^666'
 
-engine = create_engine('mysql+pymysql://cdcmlyon:projetWeb3tc@sql.free.fr/cdcmlyon', echo=True)
+engine = create_engine('sqlite:///base.db', echo=True)
 metadata = MetaData()
 
 Rubriques = Table('Rubriques', metadata,
@@ -36,12 +36,15 @@ def index():
 	try:
 		data = []
 		row = db.execute(select([Rubriques.c.id, Rubriques.c.titre]).where(Rubriques.c.id_page == 1)).fetchall()
+		
 		for rubrique in row :
+			row_elem = db.execute(select([Elements.c.texte, Elements.c.lien]).where(Elements.c.id_rubrique == rubrique[0])).fetchall()
+			
 			elements = []
-			row_elem = db.execute(select([Elements.c.texte, Rubriques.c.lien]).where(Elements.c.id_rubrique == rubrique[0])).fetchall()
+			for element in row_elem :
+				elements.append({'texte': element[0], 'lien': element[1]})
 			
 			data.append({'titre': rubrique[1], 'elements': elements})
-		print(data)
 
 	finally:
 		db.close()
