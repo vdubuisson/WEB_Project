@@ -1,5 +1,84 @@
-<div class="container-fluid">
-	<div class="row">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" ng-app="web">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Enseignement</title>
+
+<!-- Début insertion feuilles de styles-->
+<link href="bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+<link href="./bootstrap-3.3.4-dist/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+<!-- Fin insertion feuilles de styles-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+<script src="angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+<!-- SmartMenus jQuery plugin -->
+<script type="text/javascript" src="./bootstrap-3.3.4-dist/jquery.smartmenus.js"></script>
+
+<!-- SmartMenus jQuery Bootstrap Addon -->
+<script type="text/javascript" src="./bootstrap-3.3.4-dist/jquery.smartmenus.bootstrap.js"></script>
+
+</head>
+	
+	
+
+<body>
+
+
+	<div class="container-fluid">
+		<div class="row" ng-include="'navbar.html'"></div>
+		<div class="row">
+		
+			<div class="col-xs-3"><p></p></div>
+			<div class="col-xs-6">
+				<div id="mon_menu">
+	
+				<!-- Static navbar -->
+						<div class="navbar navbar-default" role="navigation">
+						  <div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							  <span class="sr-only">Enseignement</span>
+							  <span class="icon-bar"></span>
+							  <span class="icon-bar"></span>
+							  <span class="icon-bar"></span>
+							</button>
+						  </div>
+						  <div class="navbar-collapse collapse">
+						
+							<!-- Left nav -->
+							<ul class="nav navbar-nav">
+							  <li><a href="#">Disciplines</a>
+								<ul class="dropdown-menu">
+								  <li><a href="#">Enseignement musique</a></li>
+								  <li><a href="#">Danse - Art Dramatique</a></li>
+								  <li><a href="#">Classe de son</a></li>
+								  <li><a href="#">Equipe pédagogique</a></li>
+								</ul>
+							  </li>
+							  <li><a href="#">Cursus</a></li>
+							  <li><a href="#">Admissions et concours</a></li>
+							  <li><a href="#">Actualités scolarité</a></li>
+							</ul>
+						
+						  </div><!--/.nav-collapse -->
+					</div>
+				</div>
+			
+			</div>
+			<div class="col-xs-3"></div>
+			
+		
+		</div>
+		<div class="row">
+			<div class="col-xs-2"><p>Colonne 1</p></div>
+			<div class="col-xs-8"><p>Colonne 2</p></div>
+			<div class="col-xs-2"><p>Colonne 3</p></div>
+		</div>
+		
+		<div class="row" ng-include="'pied-de-page.html'"></div>
 		
 	</div>
-</div>
+</body>
+</html>
