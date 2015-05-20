@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Conservatoire de Boulogne Billancourt</title>
 
-<!-- Début insertion feuilles de styles-->
+<!-- DÃ©but insertion feuilles de styles-->
 <link href="bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
 <!-- Fin insertion feuilles de styles-->
 
@@ -23,9 +23,15 @@
 	<div class="container-fluid">
 		<div class="row" ng-include="'navbar.html'"></div>
 		
-		<div class="row">
+		<div class="row" ng-controller="Accueil">
 			<div class="col-xs-2"><p>Colonne 1</p></div>
-			<div class="col-xs-8"><p>Colonne 2</p></div>
+			<div class="col-xs-8"><p>Colonne 2</p>
+				<ul><li ng-repeat="rub in rubriques">{{rub.titre}}
+						<ul><li ng-repeat="elem in rub.elements">{{elem.texte}}</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
 			<div class="col-xs-2"><p>Colonne 3</p></div>
 		</div>
 		
