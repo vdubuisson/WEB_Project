@@ -31,7 +31,7 @@
 				  <div class="panel-body center-block" align="center">
 					 <form ng-submit="submit()" ng-controller="Connexion">
 					 	
-						<table>
+						<table ng-hide="isConnected()">
 							<tr>
 								<td>
 									<input ng-model="user.username" type="text" class="form-control" placeholder="Identifiant" aria-describedby="basic-addon1">
@@ -49,6 +49,7 @@
 								</td>
 							</tr>
 						</table>
+						<pre ng-show="isConnected()">Vous &ecirc;tes connect&eacute;</pre>
 					 </form>
 				  </div>
 				</div>
