@@ -67,4 +67,68 @@ app.controller('Connexion', function($scope, $http, $window){
 		
 	}
 
+	$scope.isConnected = function(){
+		if($window.sessionStorage.token){
+			return(true);
+		}
+		else {
+			return(false);
+		}
+	}
+
+	$scope.disconnect = function(){
+		delete $window.sessionStorage.token;
+		$window.location.href = "http://localhost:5000/";
+	}
+
+	$scope.connect = function(){
+		$window.location.href = "http://localhost:5000/Connexion";
+	}
+
+});
+
+app.controller('Private', function($http, $scope, $window){
+	$scope.tarif = {'enfant': null, 'etudiant': null, 'plein': null};
+	$scope.image = {'titre': null, 'chemin': null};
+	$scope.video = {'titre': null, 'chemin': null};
+	$scope.concert = {'titre': null, 'date': null, 'description': null, 'auteur': null, 'horaire': null, 'lieu': null, 'participation': null, 'tarif': $scope.tarif, 'style': null, 'image': $scope.image, 'video': $scope.video, 'nb_places': null, 'reservable': null};
+
+	$scope.newConcert = function(){
+		$http.post('http://localhost:5000/newConcert', $scope.concert)
+		.success(function(data){
+			alert("Ajout effectué")
+		})
+		.error(function(data, status){
+			if(status === 401){
+				alert("Accès refusé");
+			}
+			if(status === 403){
+				alert("Authentification expirée");
+			}
+			delete $window.sessionStorage.token;
+			$window.location.href = "http://localhost:5000/Connexion";
+		});
+	};
+});
+
+app.factory('authInterceptor', function ($rootScope, $q, $window) {
+  return {
+    request: function (config) {
+      config.headers = config.headers || {};
+      if ($window.sessionStorage.token) {
+        config.headers.Authorization = $window.sessionStorage.token;
+      }
+      return config;
+    },
+    response: function (response) {
+      if (response.status === 401) {
+        delete $window.sessionStorage.token;
+      }
+      return response || $q.when(response);
+    }
+  };
+});
+
+app.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('authInterceptor');
 });
