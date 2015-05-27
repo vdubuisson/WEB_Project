@@ -21,26 +21,67 @@
 		<div class="row" ng-include="'navbar.html'"></div>
 		
 		<div class="row" ng-controller="Concert">
-			<div class="col-xs-2"><p>Colonne 1</p>
-				<a ng-click="modifFiltre('all')">Aucun filtre</a><br/>
-				Tri par style
-				<ul>
-					<li ng-repeat="style in styles"><a ng-click="modifFiltre(style)">{{style}}</a></li>
-				</ul>
-				Tri par date
-				<ul>
-					<li ng-repeat="date in dates | orderBy:'-'"><a ng-click="modifFiltre(date.substring(0,7))">{{date | date : 'MMMM yyyy'}}</a></li>
-				</ul>
-			</div>
-			<div class="col-xs-8"><p>Colonne 2</p>
-				<ul>
-					<li ng-repeat="concert in concerts | orderBy:'-date'" ng-show="filtre === 'all' || filtre === concert.style || filtre === concert.date.substring(0,7)">{{concert.titre}} date: {{concert.date | date}}</li>
-
-				</ul>
-			</div>
-			<div class="col-xs-2"><p>Colonne 3</p>
+			<div class="col-xs-2">
+			
 				
+				  <div class="btn-group-vertical" role="group1" aria-label="groupe1">
+				  	<button type="button" class="btn btn-default" ng-click="modifFiltre('all')">Aucun filtre</button>
+				  </div></br></br>
+				  <div class="btn-group-vertical" role="group2" aria-label="groupe2">
+				  	
+				  	<button type="button" class="btn btn-default" ng-repeat="style in styles" ng-click="modifFiltre(style)" style="text-align:left">{{style}}</button>
+				  </div></br></br>
+				  <div class="btn-group-vertical" role="group3" aria-label="groupe3">
+				  	<button type="button" class="btn btn-default" ng-repeat="date in dates | orderBy:'-'" ng-click="modifFiltre(date.substring(0,7))" style="text-align:left">{{date | date : 'MMMM yyyy'}}</button>
+				  </div></br></br>
 			</div>
+			<div class="col-xs-8">
+				<div class="panel panel-primary" ng-repeat="concert in concerts | orderBy:'-date'" ng-show="filtre === 'all' || filtre === concert.style || filtre === concert.date.substring(0,7)">
+					<div class="panel-body">
+						<div class="media">
+						  <div class="media-left media-middle">
+							<a href="#">
+							  <img class="media-object" ng-show="concert.image.chemin" ng-src="{{concert.image.chemin}}" alt="concert.image.titre" width="100">
+							</a>
+						  </div>
+						  <div class="media-body">
+							<h4 class="media-heading">{{concert.titre}}</h4>
+							<p>Date : {{concert.date | date}}</p>
+							<p>Horaire : {{concert.horaire}} / Lieu : {{concert.lieu}}</p>
+							<div ng-show="concert.deplie">
+								<p>{{concert.description}}</p>
+								<p><span ng-show="concert.auteur">Auteur : {{concert.auteur}}</span><span ng-show="concert.auteur && concert.participation"> / </span><span ng-show="concert.participation">Participation : {{concert.participation}}</p>
+								
+								<div class="row">
+								<div class="col-xs-4"></div>
+								<div class="col-xs-4" ng-show="concert.tarif.plein || concert.etudiant || concert.enfant">
+									<div class="list-group small"></br>
+										  <a href="#" class="list-group-item disabled small"><span style="text-align:center">Tarifs</span></a>
+										  <li class="list-group-item small" ng-show="concert.tarif.plein">Plein : {{concert.tarif.plein}} &euro;</li>
+										  <li class="list-group-item small" ng-show="concert.tarif.etudiant">Etudiant : {{concert.tarif.etudiant}} &euro;</li>
+										  <li class="list-group-item small" ng-show="concert.tarif.enfant">Enfant : {{concert.tarif.enfant}} &euro;</li>  				
+										  <a href="#" class="list-group-item disabled small"><span style="text-align:center">Nombre de place : {{concert.nb_places}}</span></a>
+									</div>
+								</div>
+								<div class="col-xs-4"></div>
+								</div>
+								<div class="row" align="center" >
+									<span class="label label-success" ng-show="concert.reservable">R&eacute;servable</span>
+									<span class="label label-danger" ng-hide="concert.reservable">Non R&eacute;servable</span>
+								</div>
+							</div>
+						  </div>
+						  <div class="media-right media-bottom" ng-hide="concert.deplie">
+						  	<a ng-click="concert.deplie=true" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span></a>
+						  </div>
+						  <div class="media-right media-bottom" ng-show="concert.deplie">
+						  	<a ng-click="concert.deplie=false" href="#"><span class="glyphicon glyphicon-minus" aria-hidden="true" ></span></a>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-2"></div>
 		</div>
 		
 		<div class="row" ng-include="'pied-de-page.html'"></div>
