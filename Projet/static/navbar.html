@@ -17,14 +17,20 @@
 					<li class="active"><a href="/">Accueil</a></li>
 					<li><a href="/Enseignement">Enseignement</a></li>
 					<li><a href="/Concert">Concerts/Spectacles</a></li>
+					<li><a href="/About">About</a></li>
 					<!--<li><a href="#">Relations internationnales</a></li>
 					<li><a href="#">Vie &#233tudiante</a></li>
 					<li><a href="#">Biblioth&#232que</a></li>
 					<li><a href="#">Infos pratiques</a></li>-->
 				  </ul>
-				  <form class="navbar-form navbar-right" action="connexion.html">
-					<button type="submit" class="btn btn-success">Se connecter</button>
-				  </form>
+				  <div ng-controller="Connexion">
+				  	<form class="navbar-form navbar-right" action="connexion.html" ng-hide="isConnected()">
+						<button type="submit" class="btn btn-success">Se connecter</button>
+				  	</form>
+				  	<form class="navbar-form navbar-right" ng-submit="disconnect()" ng-show="isConnected()">
+				  		<button type="submit" class="btn btn-danger">Se d&eacute;connecter</button>
+				  	</form>
+				  </div>
 				</div><!-- /.navbar-collapse -->
 			  </div><!-- /.container-fluid -->
 			</nav>
