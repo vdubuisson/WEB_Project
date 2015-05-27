@@ -18,13 +18,14 @@
 					<li><a href="/Enseignement">Enseignement</a></li>
 					<li><a href="/Concert">Concerts/Spectacles</a></li>
 					<li><a href="/About">About</a></li>
+					<li ng-controller="Connexion" ng-show="isConnected()"><a href="/Private">Private</a></li>
 					<!--<li><a href="#">Relations internationnales</a></li>
 					<li><a href="#">Vie &#233tudiante</a></li>
 					<li><a href="#">Biblioth&#232que</a></li>
 					<li><a href="#">Infos pratiques</a></li>-->
 				  </ul>
 				  <div ng-controller="Connexion">
-				  	<form class="navbar-form navbar-right" action="connexion.html" ng-hide="isConnected()">
+				  	<form class="navbar-form navbar-right" ng-submit="connect()" ng-hide="isConnected()">
 						<button type="submit" class="btn btn-success">Se connecter</button>
 				  	</form>
 				  	<form class="navbar-form navbar-right" ng-submit="disconnect()" ng-show="isConnected()">
