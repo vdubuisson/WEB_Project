@@ -125,13 +125,17 @@ def concert():
 				else :
 					video = {}
 
-				data.append({'titre': concert[1], 'date': concert[2], 'description': concert[3], 'auteur': concert[4], 'horaire': concert[5], 'lieu': concert[6], 'participation': concert[7], 'tarif': tarifs, 'style': concert[9], 'image': image, 'id_video': video, 'nb_places': concert[12], 'reservable': concert[13]})
+				data.append({'titre': concert[1], 'date': concert[2], 'description': concert[3], 'auteur': concert[4], 'horaire': concert[5], 'lieu': concert[6], 'participation': concert[7], 'tarif': tarifs, 'style': concert[9], 'image': image, 'id_video': video, 'nb_places': concert[12], 'reservable': concert[13], 'deplie': False})
 
 		finally:
 			db.close()
 
 		return json.dumps(data)
 
+
+@app.route('/Connexion')
+def connect():
+	return redirect(url_for('static', filename='connexion.html'))
 
 @app.route('/Authenticate', methods=['POST'])
 def auth():
@@ -144,7 +148,7 @@ def auth():
 
 		if row and row[2] == password :
 			payload = {'id': row[0], 'username': row[1]}
-			token = jwt.generate_jwt(payload, key, 'PS256', datetime.timedelta(minutes=5))
+			token = jwt.generate_jwt(payload, key, 'PS256', datetime.timedelta(minutes=60))
 			data = {'token': token}
 			return json.dumps(data)
 		else :
@@ -152,6 +156,59 @@ def auth():
 
 	finally:
 		db.close()
+
+
+@app.route('/Private')
+def private():
+	return redirect(url_for('static', filename='private.html'))
+
+@app.route('/newConcert', methods=['POST'])
+def newConcert():
+	if 'Authorization' in request.headers :
+		token = request.headers['Authorization']
+
+		try:
+			header, claims = jwt.verify_jwt(token, key, ['PS256'])
+		except Exception, e:
+			abort(403)
+
+		concert = request.json
+		tarif = concert.get('tarif')
+		image = concert.get('image')
+		video = concert.get('video')
+		
+		db = engine.connect()
+		try:
+			if tarif.get('enfant') or tarif.get('etudiant') or tarif.get('plein'):
+				db.execute(Tarifs.insert(), [tarif])
+				id_tarif = db.execute(select([func.max(Tarifs.c.id)])).fetchone()
+				id_tarif = id_tarif[0]
+			else :
+				id_tarif = None
+
+			if image.get('chemin'):
+				db.execute(Media.insert(), [{'titre': image.get('titre'), 'type': "image", 'chemin': image.get('chemin')}])
+				id_image = db.execute(select([func.max(Media.c.id)])).fetchone()
+				id_image = id_image[0]
+			else :
+				id_image = None
+
+			if video.get('chemin'):
+				db.execute(Media.insert(), [{'titre': video.get('titre'), 'type': "video", 'chemin': video.get('chemin')}])
+				id_video = db.execute(select([func.max(Media.c.id)])).fetchone()
+				id_video = id_video[0]
+			else :
+				id_video = None
+
+			db.execute(Concert.insert(), [{'titre': concert.get('titre'), 'date': concert.get('date'), 'description': concert.get('description'), 'auteur': concert.get('auteur'), 'horaire': concert.get('horaire'), 'lieu': concert.get('lieu'), 'participation': concert.get('participation'), 'id_tarif': id_tarif, 'style': concert.get('style'), 'id_image': id_image, 'id_video': id_video, 'nb_places': concert.get('nb_places'), 'reservable': concert.get('reservable')}])
+
+			return "ok"
+		finally:
+			db.close()
+
+	else :
+		abort(401)
+	
 
 
 if __name__ == '__main__':
