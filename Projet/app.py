@@ -107,7 +107,25 @@ def concert():
 			row = db.execute(select([Concert])).fetchall()
 		
 			for concert in row :
-				data.append({'titre': concert[1], 'date': concert[2], 'description': concert[3], 'auteur': concert[4], 'horaire': concert[5], 'lieu': concert[6], 'participation': concert[7], 'id_tarif': concert[8], 'style': concert[9], 'id_image': concert[10], 'id_video': concert[11], 'nb_places': concert[12], 'reservable': concert[13]})
+				row_tarifs = db.execute(select([Tarifs]).where(Tarifs.c.id == concert[8])).fetchone()
+				if row_tarifs :
+					tarifs = {'enfant': row_tarifs[1], 'etudiant': row_tarifs[2], 'plein': row_tarifs[3]}
+				else :
+					tarifs = {}
+
+				row_image = db.execute(select([Media]).where(Media.c.id == concert[10])).fetchone()
+				if row_image :
+					image = {'titre': row_image[1], 'chemin': row_image[3]}
+				else :
+					image = {}
+
+				row_video = db.execute(select([Media]).where(Media.c.id == concert[11])).fetchone()
+				if row_video :
+					video = {'titre': row_video[1], 'chemin': row_video[3]}
+				else :
+					video = {}
+
+				data.append({'titre': concert[1], 'date': concert[2], 'description': concert[3], 'auteur': concert[4], 'horaire': concert[5], 'lieu': concert[6], 'participation': concert[7], 'tarif': tarifs, 'style': concert[9], 'image': image, 'id_video': video, 'nb_places': concert[12], 'reservable': concert[13]})
 
 		finally:
 			db.close()
