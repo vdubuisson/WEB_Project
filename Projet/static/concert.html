@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" ng-app="web">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Concert - BB CNR</title>
+
+<!-- Début insertion feuilles de styles-->
+<link href="bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+<!-- Fin insertion feuilles de styles-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+<script src="angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+		<div class="row" ng-include="'navbar.html'"></div>
+		
+		<div class="row" ng-controller="Concert">
+			<div class="col-xs-2"><p>Colonne 1</p>
+				<a ng-click="modifFiltre('all')">Aucun filtre</a><br/>
+				Tri par style
+				<ul>
+					<li ng-repeat="style in styles"><a ng-click="modifFiltre(style)">{{style}}</a></li>
+				</ul>
+				Tri par date
+				<ul>
+					<li ng-repeat="date in dates | orderBy:'-'"><a ng-click="modifFiltre(date.substring(0,7))">{{date | date : 'MMMM yyyy'}}</a></li>
+				</ul>
+			</div>
+			<div class="col-xs-8"><p>Colonne 2</p>
+				<ul>
+					<li ng-repeat="concert in concerts | orderBy:'-date'" ng-show="filtre === 'all' || filtre === concert.style || filtre === concert.date.substring(0,7)">{{concert.titre}} date: {{concert.date | date}}</li>
+
+				</ul>
+			</div>
+			<div class="col-xs-2"><p>Colonne 3</p>
+				
+			</div>
+		</div>
+		
+		<div class="row" ng-include="'pied-de-page.html'"></div>
+		
+	</div>
+</body>
+</html>
+
+
+
