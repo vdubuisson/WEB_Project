@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" ng-app="web">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Se connecter...</title>
+
+<!-- Début insertion feuilles de styles-->
+<link href="bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+<!-- Fin insertion feuilles de styles-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+<script src="angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+</head>
+	
+	
+
+<body>
+
+
+	<div class="container-fluid">
+		<div class="row" ng-include="'navbar.html'"></div>
+		
+		<div class="row">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-8">
+			<div class="panel panel-primary">
+				<div class="panel-heading" align="center"><h4>Ajout d'un concert</h4></div>
+				<div class="panel-body"></br>
+				<form ng-submit="newConcert()" ng-controller="Private">
+					
+					<div class="form-group">
+					
+					
+						<div class="row">
+							<div class="col-xs-7">
+								<div class="input-group">
+									<div class="input-group-addon">Titre *</div>
+					  				<input ng-model="concert.titre" type="text" required class="form-control" placeholder="" aria-describedby="basic-addon1" style="max-width:500px">
+								</div></br>
+							</div>
+							<div class="col-xs-5">
+								<div class="input-group">
+								<div class="input-group-addon">Style *</div>
+					  				<input ng-model="concert.style" required type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+								</div></br>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-xs-4">
+								<div class="input-group">
+								  <div class="input-group-addon">Date *</div>
+								  <input ng-model="concert.date" type="text" required class="form-control" placeholder="2000-01-01" aria-describedby="basic-addon1">
+								</div></br>
+							</div>
+							<div class="col-xs-4">
+								<div class="input-group">
+								<div class="input-group-addon">Horaire *</div>
+					  				<input ng-model="concert.horaire" required type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+								</div></br>
+							</div>
+							<div class="col-xs-4">
+								<div class="input-group">
+									<div class="input-group-addon">Lieu *</div>
+					  				<input ng-model="concert.lieu" type="text" required class="form-control" placeholder="" aria-describedby="basic-addon1">
+								</div></br>
+							</div>
+						</div>						
+					
+					  
+					
+					<div class="input-group">
+					<label for="description">Description *</label>
+					 <textarea id="description" ng-model="concert.description" required cols="80" rows="5" class="form-control" placeholder="" aria-describedby="basic-addon1"></textarea>
+					</div></br>
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="input-group">
+					  <div class="input-group-addon">Auteur</div>
+					  <input ng-model="concert.auteur" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" style="max-width:500px">
+					</div></br>
+						</div>
+						<div class="col-xs-6">
+							<div class="input-group">
+					  <div class="input-group-addon">Participation</div>
+					  <input ng-model="concert.participation" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" style="max-width:500px">
+					</div></br>
+						</div>
+					</div>
+					
+					<div class="row">
+							<div class="col-xs-4">
+								<div class="input-group">
+								  <div class="input-group-addon">Tarif plein</div>
+								  <input ng-model="tarif.plein" type="number" step="0.5" min="0" class="form-control" placeholder="" aria-describedby="basic-addon1">
+								  <div class="input-group-addon">&euro;</div>
+								</div></br>
+							</div>
+							<div class="col-xs-4">
+								<div class="input-group">
+								<div class="input-group-addon">Tarif &eacute;tudiant</div>
+					  				<input ng-model="tarif.etudiant" type="number" step="0.5" min="0" class="form-control" placeholder="" aria-describedby="basic-addon1">
+									<div class="input-group-addon">&euro;</div>
+								</div></br>
+							</div> 
+							<div class="col-xs-4">
+								<div class="input-group">
+									<div class="input-group-addon">Tarif enfant</div>
+					  				<input ng-model="tarif.enfant" type="number" step="0.5" min="0" class="form-control" placeholder="" aria-describedby="basic-addon1">
+									<div class="input-group-addon">&euro;</div>
+								</div></br>
+							</div>
+						</div>	
+						
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="input-group">
+						  <div class="input-group-addon" style="width:120px">Titre image</div>
+						  <input ng-model="image.titre" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" style="max-width:500px">
+						</div></br>
+							</div>
+							<div class="col-xs-6">
+								<div class="input-group">
+							  <div class="input-group-addon"  style="width:120px">Titre vid&eacute;o</div>
+							  <input ng-model="video.titre" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" style="max-width:500px">
+							</div></br>
+								
+							</div>
+					</div>
+					
+					<div class="row">
+							<div class="col-xs-6">
+								<div class="input-group">
+						  <div class="input-group-addon"  style="width:120px">Chemin image</div>
+						  <input ng-model="image.chemin" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" style="max-width:500px">
+						</div></br>
+							</div>
+							<div class="col-xs-6">
+								<div class="input-group">
+						  <div class="input-group-addon"  style="width:120px">Chemin vid&eacute;o</div>
+						  <input ng-model="video.chemin" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" style="max-width:500px">
+						</div></br>
+							</div>
+					</div>
+					
+					<div class="row">
+							<div class="col-xs-6">
+								<div class="input-group">
+						  <div class="input-group-addon">Nombre de places</div>
+						  <input ng-model="concert.nb_places" type="number" min="0" class="form-control" placeholder="" aria-describedby="basic-addon1" style="max-width:175px">
+						</div></br>
+							</div>
+							<div class="col-xs-6">
+								<div  class="checkbox">
+						  <label><input ng-model="concert.reservable" type="checkbox" placeholder="" aria-describedby="basic-addon1"> R&eacute;servable</label>
+						  
+						</div></br>
+							</div>
+					</div>
+					</div>
+					<div class="row" align="center">
+						<div class="col-xs-2"></div>
+						<div class="col-xs-4">
+							<button type="submit" class="btn btn-success">Envoyer</button>
+						</div>
+						<div class="col-xs-4">
+							<button type="reset" class="btn btn-danger">Reset</button>
+						</div>
+						<div class="col-xs-2"></div>
+					</div>
+				</form>
+				</div>
+				</div>
+			</div>
+			<div class="col-xs-2"></div>
+		</div>
+		
+		<div class="row" ng-include="'pied-de-page.html'"></div>
+		
+	</div>
+</body>
+</html>
