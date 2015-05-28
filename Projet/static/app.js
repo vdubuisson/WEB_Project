@@ -1,4 +1,4 @@
-var app = angular.module('web', []);
+var app = angular.module('web', ['ngAnimate']);
 
 app.controller('Accueil', function($scope, $http){
 	$http.post('http://localhost:5000/', "").success(function(data, status) {
@@ -87,7 +87,7 @@ app.controller('Connexion', function($scope, $http, $window){
 
 });
 
-app.controller('Private', function($http, $scope, $window){
+app.controller('Private', function($http, $scope, $window, $filter){
 	$scope.tarif = {'enfant': null, 'etudiant': null, 'plein': null};
 	$scope.image = {'titre': null, 'chemin': null};
 	$scope.video = {'titre': null, 'chemin': null};
@@ -96,7 +96,7 @@ app.controller('Private', function($http, $scope, $window){
 	$scope.newConcert = function(){
 		$http.post('http://localhost:5000/newConcert', $scope.concert)
 		.success(function(data){
-			alert("Ajout effectué")
+			alert("Ajout effectué");
 		})
 		.error(function(data, status){
 			if(status === 401){
@@ -107,6 +107,18 @@ app.controller('Private', function($http, $scope, $window){
 			}
 			delete $window.sessionStorage.token;
 			$window.location.href = "http://localhost:5000/Connexion";
+		});
+	};
+
+	$scope.cleanConcert = function(){
+		date = {'date': $filter('date')(new Date(), 'yyyy-MM-dd')};
+		
+		$http.post('http://localhost:5000/cleanConcert', date)
+		.success(function(data){
+			alert("Nettoyage effectué");
+		})
+		.error(function(data, status){
+			alert("Echec");
 		});
 	};
 });

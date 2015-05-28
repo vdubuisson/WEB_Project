@@ -6600,3 +6600,16 @@ button.close {
 	align: center;
 	text-align: center;
 }
+
+
+
+.animate-show.ng-hide-add.ng-hide-add-active,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  /*-webkit-transition: all linear 0.2s;*/
+  transition: all linear 0.2s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  opacity: 0;
+}
