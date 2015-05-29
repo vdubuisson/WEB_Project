@@ -159,11 +159,11 @@ def auth():
 
 
 @app.route('/Ajout')
-def private():
+def ajout():
 	return redirect(url_for('static', filename='ajout-concert.html'))
 
 @app.route('/Suppression')
-def private():
+def suppression():
 	return redirect(url_for('static', filename='suppression-concert.html'))
 
 @app.route('/newConcert', methods=['POST'])
