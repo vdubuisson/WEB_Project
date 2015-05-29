@@ -158,9 +158,13 @@ def auth():
 		db.close()
 
 
-@app.route('/Private')
+@app.route('/Ajout')
 def private():
-	return redirect(url_for('static', filename='private.html'))
+	return redirect(url_for('static', filename='ajout-concert.html'))
+
+@app.route('/Suppression')
+def private():
+	return redirect(url_for('static', filename='suppression-concert.html'))
 
 @app.route('/newConcert', methods=['POST'])
 def newConcert():
@@ -209,6 +213,31 @@ def newConcert():
 	else :
 		abort(401)
 	
+@app.route('/cleanConcert', methods=['POST'])
+def cleanConcert():
+	if 'Authorization' in request.headers :
+		token = request.headers['Authorization']
+
+		try:
+			header, claims = jwt.verify_jwt(token, key, ['PS256'])
+		except Exception, e:
+			abort(403)
+
+		date = request.json.get('date')
+		
+		db = engine.connect()
+		try:
+			row_tarif = db.execute(select([Concert.c.id_tarif]).where(Concert.c.date < date)).fetchall()
+			for tarif in row_tarif:
+				db.execute(Tarifs.delete(Tarifs.c.id == tarif[0]))
+
+		finally:
+			db.close()
+
+		return "ok"
+
+	else :
+		abort(401)
 
 
 if __name__ == '__main__':
