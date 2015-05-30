@@ -55,11 +55,9 @@
 							<h4 class="media-heading">{{concert.titre}}</h4>
 							<p>Date : {{concert.date | date}}</p>
 							<p>Horaire : {{concert.horaire}} / Lieu : {{concert.lieu}}</p>
-							<div ng-show="concert.deplie">
+							<div ng-show="concert.deplie" class="animate-show">
 								<p>{{concert.description}}</p>
 								<p><span ng-show="concert.auteur">Auteur : {{concert.auteur}}</span><span ng-show="concert.auteur && concert.participation"> / </span><span ng-show="concert.participation">Participation : {{concert.participation}}</p>
-								<p>chemin : {{concert.video.chemin}}</p>
-								<p>chemin image : {{concert.image.chemin}}</p>
 								<div class="row" align="center" ng-show="concert.video.chemin">
 									<video class="projekktor  img-responsive center-block" width="320" height="240" controls>
 										<source ng-src="{{concert.video.chemin}}"/>
@@ -97,12 +95,6 @@
 				</div>
 			</div>
 			<div class="col-xs-2"></div>
-		</div>
-		<div class="row">
-									<video class="projekktor  img-responsive center-block" width="320" height="240" controls>
-										<source src="video/video-concert-beethoven.webm" type="video/webm"/>
-									</video>
-									
 		</div>
 		
 		<div class="row" ng-include="'pied-de-page.html'"></div>
