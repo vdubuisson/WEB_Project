@@ -54,13 +54,13 @@
 								<ul class="dropdown-menu">
 								  <li><a href="#" ng-click="onglet = 'enseignement'">Enseignement musique</a></li>	
 								  <li><a href="#" ng-click="onglet = 'danse'">Danse - Art Dramatique</a></li>
-								  <li><a href="#">Classe de son</a></li>
-								  <li><a href="#">Equipe p&#233dagogique</a></li>
+								  <li><a href="#" ng-click="onglet = 'son'">Classe de son</a></li>
+								  <li><a href="#" ng-click="onglet = 'equipe'">Equipe p&#233dagogique</a></li>
 								</ul>
 							  </li>
-							  <li><a href="#">Cursus</a></li>
-							  <li><a href="#">Admissions et concours</a></li>
-							  <li><a href="#">Actualit&#233s scolarit&#233</a></li>
+							  <li><a href="#" ng-click="onglet='cursus'">Cursus</a></li>
+							  <li><a href="#" ng-click="onglet='admission'">Admissions et concours</a></li>
+							  <li><a href="#" ng-click="onglet='actualite'">Actualit&#233s scolarit&#233</a></li>
 							</ul>
 						
 						  </div><!--/.nav-collapse -->
@@ -496,7 +496,204 @@
 			<div class="col-xs-2"></div>
 		</div>
 		</div>
-		
+		<div class="row" ng-show="onglet === 'son'">
+			<div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                     <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading"><h4>Classe de son</h4></div>
+                        <div class="panel-body">
+                            <h4>Dossier d'inscription</h4>
+                            <p>Le dossier d'inscription au concours est disponible &#224 l'accueil du conservatoire &#224 partir du mois de septembre - &#233galement t&#233l&#233chargeable sur le site (consulter la rubrique <a href="http://www.bb-cnr.com/content/BBCNR/Enseignement/Admissions%20et%20concours/index.php">Admissions et concours</a>)
+                            </p>
+                            <h4>Concours ann&#233e scolaire 2015-2016</h4>
+                            <p>L'admission se fait uniquement sur concours. </p>
+                            <ul>
+                                <li>limite d'&#226ge 25 ans</li>
+                                <li>&#234tre titulaire d'un bac, de dipl&#244mes de l'enseignement sup&#233rieur</li>
+                                <li>poss&#233der un niveau musical permettant d'&#234tre &#224 l'aise dans la lecture de partitions</li>
+                                <li> s'acquitter des droits d'inscription</li>
+                                </br></br>
+                                <p align="center">
+				  					<img class="media-object img-responsive" src="./photos/enseignement/classeSon.jpg" alt="" width="200" align="middle">
+				  				</p>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+            </div>
+        </div>
+		<div class="row" ng-show="onglet === 'equipe'">
+			<div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                     <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading"><h4>Equipe p&#233dagogique</h4></div>
+                        <div class="panel-body">
+                            <h4>Direction</h4>
+                            <p>Adjointe de la directrice, Responsable de la Vie scolaire <i>Musique Cycles1 &#224 COP, Th&#233&#226tre, P&#244le sup&#233rieur (*)</i> : H&#233l&#233ne GENET </br>
+							   Adjointe de la directrice, Coordinatrice p&#233dagogique Danse, CHAM/CHAD, <i>P&#244le Sup&#233rieur (*)</i> : Ann VIGNAL (Int&#233rim d'H&#233l&#233ne CELHAY) </br>
+							   Coordinatrice p&#233dagogique <i>Formation Musicale</i> : Caroline HEYRAUD-KUZMA </br>
+       						   Coordinatrice p&#233dagogique <i>C.O.O.M.</i> : Lucie MADURELL </br>
+       						   </br>
+							<font size ="1p">(*) P&#244le Sup&#233rieur Paris-Boulogne-Billancourt (PSPBB) : H&#233l&#233ne GENET, conseill&#233re aux &#233tudes - Musique, coordinatrice des cursus Direction et Cr&#233ation, Ann VIGNAL, coordinatrice des enseignements universitaires.</font>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+            </div>
+        </div>
+        <div class="row" ng-show="onglet === 'cursus'">
+			<div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                     <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading"><h4>Le cursus g&#233n&#233ral</h4></div>
+                        <div class="panel-body">
+                            <h4>Organisation</h4>
+                            <p>Le cursus des &#233tudes est organis&#233 en <b>quatre cycles</b>, d'une dur&#233e variable comprise entre 2 et 4 ans. Ils correspondent en dur&#233e et contenu &#224 l'&#233volution moyenne de la maturit&#233 et de la capacit&#233 d'&#233volution des enfants.
+							</br>
+							</br>
+							Le cursus comprend pour chacun des cycles, outre la discipline principale instrumentale ou chor&#233graphique un ensemble de disciplines compl&#233mentaires obligatoires : formation musicale, orchestres, musique de chambre notamment. Il comprend &#233galement des disciplines optionnelles : second instrument, &#233rudition, &#233criture musicale, accompagnement, etc ...
+							</br>
+							L'admission pour chacun des cycles est conditionn&#233e par la r&#233ussite &#224 des tests ou concours d'entr&#233e, organis&#233s entre les mois de mai et octobre de chaque ann&#233e.
+							</p>
+							<ul>
+								<li><b>Cycle 1 et 2</b></li>
+								<p>Le cycle 1 permet de d&#233rvelopper la motivation de l'enfant et d'&#233rtablir les fondements d'une m&#233rthode de travail. Le cycle 2 prolonge et approfondit les acquis du premier cycle dans une perspective d'&#233rquilibre entre les diff&#233rrentes disciplines, tout en favorisant l'acc&#233s  l'autonomie musicale.
+								</p>
+								<li><b>Cycle 3 (CEM & CEC)</b></li>
+								<p>Le cycle 3 a pour objet l'approfondissement des connaissances et des pratiques pour les musiciens et danseurs amateurs. Il pr&#233pare &#224 l'obtention du Certificat de fin d'Etudes musicales ou chor&#233graphiques.
+								</p>
+								<li><b>Cycle sp&#233cialis&#233 ( DEM & DEC)</b></li>
+								<p>Cycle destin&#233 &#224 approfondir la motivation et les aptitudes des &#233l&#233ves en vue d'une orientation professionnelle. Il dispense un enseignement permettant &#224 l'&#233l&#233ves d'acqu&#233rir une culture artistique et un savoir-faire n&#233cessaire &#224 une pratique confirm&#233e.
+								</p>
+							</ul>
+							<p><b>La fin du cursus d'&#233tudes est sanctionn&#233e par l'attribution du dipl&#244me</b> d'&#233tudes musicales <b>(DEM)</b> ou chor&#233graphiques <b>(DEC)</b>, dipl&#244mes nationaux valid&#233s par le minist&#232re de la Culture, qui permettent une orientation ult&#233rieure vers les m&#233tiers de la musique et de la danse.
+							</p>
+							</br>
+							<font size ="2p">En savoir plus: <a href="http://www.bb-cnr.com/pdf/enseignement/R%E8glt%20Cursus%20Instrumental%20-Juil2014.pdf">t&#233l&#233charger le R&#232glement des &#233tudes du cursus instrumental (PDF)</a></font>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+            </div>
+        </div>
+        <div class="row" ng-show="onglet === 'admission'">
+			<div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                     <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading"><h4>Admissions et concours</h4></div>
+                        <div class="panel-body">
+                            <h4>Classes &#224 horaires am&#233nag&#233s musique et danse</h4>
+                            <ul>
+                           		<li>Proc&#233dures d'inscription et d'admission Musique et danse, de l'&#233cole &#233l&#233mentaire au lyc&#233e :</li>
+                           		<i>consulter la rubrique:</i> <a href="http://www.bb-cnr.com/content/BBCNR/classes_horaires_amenages.php"> Classes &#224 horaires am&#233nag&#233s</a>
+                           		</br></br>
+                    			<li>Programmes impos&#233s pour l'entr&#233e 2015-16 - Coll&#232ges et lyc&#233es</li>
+                    			<i>consulter la liste ci-dessous:</i>
+                    			</br>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20ACCORDEON.pdf">Accord&#233on</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20ALTO.pdf">Alto</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20BASSON.pdf">Basson</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20CLARINETTE.pdf">Clarinette</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20CLAVECIN.pdf">Clavecin</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20CONTREBASSE.pdf">Contrebasse</a></div>
+                    			</br>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20FLUTE%20A%20BEC.pdf">Fl&#251te &#224 bec</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20GUITARE.pdf">Guitare</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20HARPE.pdf">Harpe</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20HAUTBOIS.pdf">Hautbois</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20JEUNES%20VOIX.pdf">Jeunes voix</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20ORGUE.pdf">Orgue</a></div> 
+                    			</br>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20PERCUSSIONS.pdf">Percussions</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20PIANO.pdf">Piano</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20SAXOPHONE.pdf">Saxophone</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20TROMPETTE.pdf">Trompette</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20VIOLON.pdf">Violon</a></div>
+                    			<div class="col-xs-2"><a href="http://www.bb-cnr.com/pdf/HA/A%20IMPOSES%20ADMISSIONS%20HA%202015-2016/ADM%20%20HA%2015-16%20VIOLONCELLE.pdf">Violoncelle</a></div>
+                    		</ul>
+                    	</div>
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+            </div>
+			<div class="row">
+				<div class="col-xs-2"></div>
+				<div class="col-xs-8">
+					<div class="panel panel-default">
+						<!-- Default panel contents -->
+						<div class="panel-heading"><h4>Formation musicale</h4></div>
+						<div class="panel-body">	
+							<ul>
+								<li>Pour les niveaux scolaires CP</li>
+								<i>consulter la rubrique:</i> <a href="http://www.bb-cnr.com/content/BBCNR/Enseignement/Admissions%20et%20concours/COOM.php">cycle d'observation et d'orientation musicales</a>
+								</br></br>
+								<li>Pour les niveaux scolaires CE1 CE2 CM1 CM2</li>
+								<i>Concours d'entr&#233e: </i>
+								</br>
+								</br>
+									Un test de formation musicale est ouvert aux d&#233butants scolaris&#233s en CE1, CE2, CM1 et CM2, habitant Boulogne-Billancourt et les communes de la Communaut&#233 d'agglom&#233ration Grand Paris Seine Ouest suivantes : Chaville, Issy-les-Moulineaux, Meudon, S&#232vres, Vanves, Ville d'Avray.
+									</br>Les inscriptions sont prises sur place le jour du test de formation musicale.
+								</br></br>
+									Pi&#232ces &#224 fournir pour l'inscription : 2 photos + un justificatif de domiciliation &#224 Boulogne. Le test comprend des &#233preuves d'aptitudes musicales, rythmiques et un entretien de motivation. Pour les &#233l&#232ves qui ont d&#233j&#224 fait de la musique, le jury orientera les &#233l&#232ves : 
+								<ul>
+									<li>soit vers un concours d'entr&#233e en instrument au Conservatoire</li>
+									<li>soit vers l'Ecole de Musique</li>
+								</ul>	
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-2"></div>
+			</div>
+        </div>
+        <div class="row" ng-show="onglet === 'actualite'">
+			<div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-8">
+                     <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading"><h4>Informations diverses</h4></div>
+                        <div class="panel-body">
+                            <ul>
+                            	<li>EXAMENS DE FIN D'ANNEE SCOLAIRE <a href="http://www.bb-cnr.com/content/BBCNR/rendezvous.php">suivre ce lien</a></li>
+                            	</br>
+                            	<li> FIN DES COURS 2014-15 : Les dates !</li>  (Dates de fin des cours d'instruments, formation musicale, chorales) <a href="http://www.bb-cnr.com/pdf/Publications/AFF%20FIN%20DES%20COURS%202014-15.pdf">suivre ce lien</a>
+                            	</br></br>
+                            	<li>S'INSCRIRE AUX CONCOURS</li> (Dates des &#233preuves, programmes, convocations, r&#233sultats d'admission) <a href="http://www.bb-cnr.com/content/BBCNR/Enseignement/Admissions%20et%20concours/index.php">suivre ce lien</a>
+                            	</br></br>
+                            	<li>RENTREE SCOLAIRE 2015-16 : des dates &#224 retenir !</li>
+                            	</br>
+                            	<b>Rencontres avec les professeurs</b>
+                            	</br>  Ces rencontres sont destin&#233es &#224 r&#233server les jours et horaires des cours. Elles sont organis&#233es la semaine qui pr&#233c&#232de la rentr&#233e au conservatoire.
+                            	</br></br>
+                            	<b> Rentr&#233e scolaire CHAM/CHAD </b>
+                            	</br>      
+                            	Informations et dossiers d'inscription pour la rentr&#233e 2015-2016. <a href="http://www.bb-cnr.com/content/BBCNR/classes_horaires_amenages.php">suivre ce lien</a>
+                            	</br></br>
+                            	<b> Rentr&#233e scolaire COOM </b>
+                            	</br>Consulter la rubrique: <a href="http://www.bb-cnr.com/content/BBCNR/Enseignement/Admissions%20et%20concours/COOM.php">suivre ce lien</a>
+                            	</br></br>
+                            	<b>Rentr&#233e scolaire inscriptions/r&#233inscriptions</b>	
+                            	</br><a href="http://www.bb-cnr.com/content/BBCNR/classes_horaires_amenages.php">consulter le tableau des dates &#224 retenir</a>
+                            	</br></br>
+                            	<li>Consulter le calendrier scolaire de l'ann&#233e et pour les ann&#233es &#224 venir :</li>
+                            	<a href="http://www.education.gouv.fr/pid184/le-calendrier-scolaire.html">http://www.education.gouv.fr/pid184/le-calendrier-scolaire.html</a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+            </div>
+        </div>
 		<div class="row" ng-include="'pied-de-page.html'"></div>
 		
 	</div>
