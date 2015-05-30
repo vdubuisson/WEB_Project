@@ -125,7 +125,7 @@ def concert():
 				else :
 					video = {}
 
-				data.append({'titre': concert[1], 'date': concert[2], 'description': concert[3], 'auteur': concert[4], 'horaire': concert[5], 'lieu': concert[6], 'participation': concert[7], 'tarif': tarifs, 'style': concert[9], 'image': image, 'id_video': video, 'nb_places': concert[12], 'reservable': concert[13], 'deplie': False})
+				data.append({'titre': concert[1], 'date': concert[2], 'description': concert[3], 'auteur': concert[4], 'horaire': concert[5], 'lieu': concert[6], 'participation': concert[7], 'tarif': tarifs, 'style': concert[9], 'image': image, 'video': video, 'nb_places': concert[12], 'reservable': concert[13], 'deplie': False})
 
 		finally:
 			db.close()
@@ -230,6 +230,16 @@ def cleanConcert():
 			row_tarif = db.execute(select([Concert.c.id_tarif]).where(Concert.c.date < date)).fetchall()
 			for tarif in row_tarif:
 				db.execute(Tarifs.delete(Tarifs.c.id == tarif[0]))
+
+			row_image = db.execute(select([Concert.c.id_image]).where(Concert.c.date < date)).fetchall()
+			for image in row_image:
+				db.execute(Media.delete(Media.c.id == image[0]))
+
+			row_video = db.execute(select([Concert.c.id_video]).where(Concert.c.date < date)).fetchall()
+			for video in row_video:
+				db.execute(Media.delete(Media.c.id == video[0]))
+
+			db.execute(Concert.delete(Concert.c.date < date))
 
 		finally:
 			db.close()
