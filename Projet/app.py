@@ -125,7 +125,7 @@ def concert():
 				else :
 					video = {}
 
-				data.append({'titre': concert[1], 'date': concert[2], 'description': concert[3], 'auteur': concert[4], 'horaire': concert[5], 'lieu': concert[6], 'participation': concert[7], 'tarif': tarifs, 'style': concert[9], 'image': image, 'video': video, 'nb_places': concert[12], 'reservable': concert[13], 'deplie': False})
+				data.append({'id': concert[0], 'titre': concert[1], 'date': concert[2], 'description': concert[3], 'auteur': concert[4], 'horaire': concert[5], 'lieu': concert[6], 'participation': concert[7], 'tarif': tarifs, 'style': concert[9], 'image': image, 'video': video, 'nb_places': concert[12], 'reservable': concert[13], 'deplie': False})
 
 		finally:
 			db.close()
@@ -248,6 +248,45 @@ def cleanConcert():
 
 	else :
 		abort(401)
+
+
+@app.route('/suppConcert', methods=['POST'])
+def suppConcert():
+	if 'Authorization' in request.headers :
+		token = request.headers['Authorization']
+
+		try:
+			header, claims = jwt.verify_jwt(token, key, ['PS256'])
+		except Exception, e:
+			abort(403)
+
+		concerts = request.json
+		
+		db = engine.connect()
+		try:
+			for concert in concerts :
+
+				row = db.execute(select([Concert.c.id_tarif, Concert.c.id_image, Concert.c.id_video]).where(Concert.c.id == concert.get('id'))).fetchone()
+				if row[0]:
+					db.execute(Tarifs.delete(Tarifs.c.id == row[0]))
+				if row[1]:
+					db.execute(Media.delete(Media.c.id == row[1]))
+				if row[2]:
+					db.execute(Media.delete(Media.c.id == row[2]))
+
+				db.execute(Concert.delete(Concert.c.id == concert.get('id')))
+
+		finally:
+			db.close()
+
+		return "ok"
+
+	else :
+		abort(401)
+
+@app.route('/About')
+def about():
+	return redirect(url_for('static', filename='about.html'))
 
 
 if __name__ == '__main__':
