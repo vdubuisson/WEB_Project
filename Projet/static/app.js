@@ -110,6 +110,10 @@ app.controller('Private', function($http, $scope, $window, $filter){
 		});
 	};
 
+	
+});
+
+app.controller('Clean', function($http, $scope, $window, $filter){
 	$scope.cleanConcert = function(){
 		date = {'date': $filter('date')(new Date(), 'yyyy-MM-dd')};
 		
@@ -118,9 +122,50 @@ app.controller('Private', function($http, $scope, $window, $filter){
 			alert("Nettoyage effectué");
 		})
 		.error(function(data, status){
-			alert("Echec");
+			if(status === 401){
+				alert("Accès refusé");
+			}
+			if(status === 403){
+				alert("Authentification expirée");
+			}
+			delete $window.sessionStorage.token;
+			$window.location.href = "http://localhost:5000/Connexion";
 		});
 	};
+
+	$http.post('http://localhost:5000/Concert', {'type': "all"})
+	.success(function(data){
+		$scope.concerts = data;
+	})
+	.error(function(data){
+	});
+
+	$scope.suppConcert = function(){
+		concertToDel = [];
+		for(i in $scope.concerts){
+			if($scope.concerts[i].deplie === true){
+				concertToDel.push({'id': $scope.concerts[i].id});
+			}
+		}
+		if(concertToDel.length !== 0){
+			$http.post('http://localhost:5000/suppConcert', concertToDel)
+			.success(function(data){
+				alert("Concerts supprimés");
+				$window.location.href = "http://localhost:5000/Suppression";
+			})
+			.error(function(data, status){
+				if(status === 401){
+					alert("Accès refusé");
+				}
+				if(status === 403){
+					alert("Authentification expirée");
+				}
+				delete $window.sessionStorage.token;
+				$window.location.href = "http://localhost:5000/Connexion";
+			});
+		}		
+	};
+
 });
 
 app.factory('authInterceptor', function ($rootScope, $q, $window) {
