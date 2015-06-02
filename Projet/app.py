@@ -92,7 +92,18 @@ def index():
 
 @app.route('/Enseignement')
 def enseignement():
-	return redirect(url_for('static', filename='enseignement.html'))
+	return redirect('static/enseignement.html')
+
+@app.route('/static/Enseignement/<part>')
+def ongletEnseignement(part):
+	if part == "ActualitesScolarite":
+		return redirect('static/enseignement.html#?onglet=actualite')
+
+	if part == "AdmissionsConcours":
+		return redirect('static/enseignement.html#?onglet=admission')
+
+	if part == "Cursus":
+		return redirect('static/enseignement.html#?onglet=cursus')
 
 @app.route('/Concert', methods=['GET', 'POST'])
 def concert():
