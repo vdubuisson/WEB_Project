@@ -24,16 +24,44 @@
 	<div class="container-fluid">
 		<div class="row" ng-include="'navbar.html'"></div>
 		
+		<div class="row">        
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-8">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+                        <!-- Wrapper for slides -->
+                          <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                  <img class="center-block img-rounded" src="photos/caroussel/danse-1.jpg">
+                                </div>
+                                <div class="item">
+                                  <img class="center-block img-rounded" src="photos/caroussel/concert-2.jpg">
+                                </div>
+                                <div class="item">
+                                  <img class="center-block img-rounded" src="photos/caroussel/concert-chorale.jpg">
+                                </div>
+                                <div class="item">
+                                  <img class="center-block img-rounded" src="photos/caroussel/piano-1.jpg">
+                                </div>
+                          </div>
+                        </div>
+                  </div>
+                 
+                  <div class="col-xs-2"></div>
+                  </div></br>
 		
 		
-		
-		<div class="row" ng-controller="Accueil">
+		<div class="row" ng-controller="Accueil" ng-init="reduit=false">
 			<div class="col-xs-2"></div>
 			<div class="col-xs-8">
 				<div class="highlight">
 				  <h3 align="center">{{bienvenue.titre}}</h3>
-				  <p>{{bienvenue.elements[0].texte}}</p>
-				  <p align="justify"><a class="btn btn-primary btn-xs" href="{{bienvenue.elements[0].lien}}" role="button">En savoir plus</a></p>
+				  <p class="text-justify">Rep&eacute;r&eacute; de longue date comme un &eacute;tablissement d'excellence, le Conservatoire &agrave; Rayonnement R&eacute;gional (CRR) de Boulogne-Billancourt est l'une des figures de proue de l'enseignement musical et chor&eacute;graphique en France.</p>
+				  <p align="justify" ng-hide="reduit"><a class="btn btn-primary btn-xs" ng-click="reduit=true" role="button">En savoir plus</a></p>
+				  <p class="text-justify animate-show" ng-show="reduit">
+				  	<BR>Plac&eacute; sous le contr&ocirc;le p&eacute;dagogique du Minist&egrave;re de la Culture et de la Communication, il d&eacute;livre des dipl&ocirc;mes nationaux. <BR>Partenaire du CRR de Paris, de la Sorbonne-Paris IV et de Sorbonne Nouvelle-Paris III, il constitue avec eux le P&ocirc;le Sup&eacute;rieur Paris-Boulogne-Billancourt (PSPBB),&nbsp; proposant une offre de 1er cycle sup&eacute;rieur et d&eacute;livrant notamment le Dipl&ocirc;me d'Etat (DE) de professeur de musique.<BR><BR>Accueillant environ 1400 &eacute;l&egrave;ves dont pr&egrave;s de 400 sont en phase de formation pr&eacute;professionnelle, il est riche d'une &eacute;quipe de 114 professeurs et assistants d'une qualit&eacute; exemplaire et reconnue, soutenue par un personnel administratif et technique de 36 personnes.<BR><BR>Les jeunes Boulonnais peuvent y recevoir un enseignement musical et chor&eacute;graphique complet : apr&egrave;s le cycle d'initiation COOM, les enfants peuvent int&eacute;grer des classes &agrave; horaires am&eacute;nag&eacute;s (CHAM et CHAD) qui permettent, &agrave; l'int&eacute;rieur du temps scolaire, de mieux concilier formation g&eacute;n&eacute;rale et formation artistique, ou poursuivre &agrave; leur rythme un cursus traditionnel.<BR>Un cycle de formation &agrave; l'art dramatique y est &eacute;galement ouvert depuis 2011.<BR><BR>Perp&eacute;tuant une longue tradition d'&eacute;changes et d'ouverture, le CRR d&eacute;veloppe de multiples partenariats, y compris au-del&agrave; de nos fronti&egrave;res et notamment dans le cadre du projet europ&eacute;en ERASMUS.<BR><BR>L'innovation p&eacute;dagogique et la cr&eacute;ation sont au coeur d'une&nbsp; programmation riche et vari&eacute;e de concerts, spectacles, master-classes ou conf&eacute;rences port&eacute;e par les professeurs et les &eacute;l&egrave;ves auxquels viennent se joindre des artistes invit&eacute;s.<BR><BR>Par l'expression publique des talents de ses enseignants et des fruits de ses activit&eacute;s p&eacute;dagogiques, le CRR de Boulogne-Billancourt se r&eacute;v&egrave;le comme l'un des acteurs majeurs de la vie culturelle de la ville de Boulogne-Billancourt et de la communaut&eacute; d'agglom&eacute;ration Grand Paris Seine Ouest, participant ainsi largement &agrave; leur rayonnement.
+				  </p>
+				   <p align="justify" ng-show="reduit"><a class="btn btn-primary btn-xs" ng-click="reduit=false" role="button">R&eacute;duire</a></p>
 				</div>
 			</div>
 			<div class="col-xs-2"></div>
