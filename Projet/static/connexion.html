@@ -43,14 +43,14 @@
 									<input ng-model="user.password" type="password" class="form-control" placeholder="Mot de passe" aria-describedby="basic-addon1">
 								</td>
 							</tr>
-							<pre ng-hide="valid">Identifiant ou mot de passe invalide</pre>
+							<pre ng-hide="valid" class="bg-danger"><span class="text-danger">Identifiant ou mot de passe invalide</span></pre>
 							<tr>
 								<td align="center"></br></br>
 									<button type="submit" class="btn-lg btn-success">Se connecter</button>
 								</td>
 							</tr>
 						</table>
-						<pre ng-show="isConnected()">Vous &ecirc;tes connect&eacute;</pre>
+						<pre ng-show="isConnected()" class="bg-success"><span class="text-success">Vous &ecirc;tes connect&eacute;</span></pre>
 					 </form>
 				  </div>
 				</div>

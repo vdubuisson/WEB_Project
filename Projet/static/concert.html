@@ -46,7 +46,7 @@
 				<div class="panel panel-primary" ng-repeat="concert in concerts | orderBy:'-date'" ng-show="filtre === 'all' || filtre === concert.style || filtre === concert.date.substring(0,7)">
 					<div class="panel-body">
 						<div class="media">
-						  <div class="media-left media-middle">
+						  <div class="media-left media-top">
 							<a href="#">
 							  <img class="media-object" ng-show="concert.image.chemin" ng-src="{{concert.image.chemin}}" alt="concert.image.titre" width="100">
 							</a>
@@ -55,13 +55,13 @@
 							<h4 class="media-heading">{{concert.titre}}</h4>
 							<p>Date : {{concert.date | date}}</p>
 							<p>Horaire : {{concert.horaire}} / Lieu : {{concert.lieu}}</p>
-							<div ng-show="concert.deplie" class="animate-show">
-								<p>{{concert.description}}</p>
-								<p><span ng-show="concert.auteur">Auteur : {{concert.auteur}}</span><span ng-show="concert.auteur && concert.participation"> / </span><span ng-show="concert.participation">Participation : {{concert.participation}}</p>
+							<div ng-show="concert.deplie" class="animate-show"></br>
+								<p class="text-justify">{{concert.description}}</p>
+								<p><span ng-show="concert.auteur">Auteur : {{concert.auteur}}</span><span ng-show="concert.auteur && concert.participation"> / </span><span ng-show="concert.participation">Participation : {{concert.participation}}</p></br>
 								<div class="row" align="center" ng-show="concert.video.chemin">
 									<video class="projekktor  img-responsive center-block" width="320" height="240" controls>
 										<source ng-src="{{concert.video.chemin}}"/>
-									</video>
+									</video></br>
 								</div>
 								<div class="row">
 								<div class="col-xs-4"></div>

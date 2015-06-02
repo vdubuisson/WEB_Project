@@ -97,6 +97,7 @@ app.controller('Private', function($http, $scope, $window, $filter){
 		$http.post('http://localhost:5000/newConcert', $scope.concert)
 		.success(function(data){
 			alert("Ajout effectué");
+			$window.location.href="http://localhost:5000/Ajout";
 		})
 		.error(function(data, status){
 			if(status === 401){
@@ -120,6 +121,7 @@ app.controller('Clean', function($http, $scope, $window, $filter){
 		$http.post('http://localhost:5000/cleanConcert', date)
 		.success(function(data){
 			alert("Nettoyage effectué");
+			$window.location.href = "http://localhost:5000/Suppression";
 		})
 		.error(function(data, status){
 			if(status === 401){
