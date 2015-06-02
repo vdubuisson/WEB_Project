@@ -9,6 +9,14 @@ app.controller('Accueil', function($scope, $http){
 	});
 });
 
+app.controller('Enseignement', function($scope, $location){
+	$scope.onglet = 'enseignement';
+	req = $location.search();
+	if(req.onglet){
+		$scope.onglet = req.onglet;
+	}
+});
+
 app.controller('Concert', function($scope, $http){
 
 	$http.post('http://localhost:5000/Concert', {'type': "all"}).success(function(data){
